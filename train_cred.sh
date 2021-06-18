@@ -124,7 +124,7 @@ python train.py \
         --model_name CRED_5e6_256 \
         --dataset_name "STEAD-ZEROS" \
         --train_path "Data/TrainReady/Train_constant.npy" \
-        --val_path "Data/TrainReady/Val_constant.npy" &
+        --val_path "Data/TrainReady/Val_constant.npy"
 
 P7=$!
 
