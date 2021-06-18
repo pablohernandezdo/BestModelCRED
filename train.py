@@ -249,13 +249,17 @@ def train_model(train_loader, dataset_name, val_loader, net, device, epochs,
     pd_val_acc = pd.DataFrame({'ValAcc': val_accuracies})
     pd_val_loss = pd.DataFrame({'ValLoss': val_losses})
 
+    train_batches_arr = np.ones((len(tr_accuracies), 1)) * best_n_batches
+    pd_train_batches = pd.DataFrame({'Train_batches': train_batches_arr})
+
     pd_data = pd.concat([pd_train_acc,
                          pd_train_loss,
                          pd_val_acc,
-                         pd_val_loss], axis=1)
+                         pd_val_loss,
+                         pd_train_batches], axis=1)
 
     pd_data.to_csv(f'LearningCurves/{dataset_name}/'
-                   f'{model_name}_{best_n_batches}.csv', index=False)
+                   f'{model_name}.csv', index=False)
 
     # Plot train and validation accuracies
     learning_curve_acc(tr_accuracies, val_accuracies,
