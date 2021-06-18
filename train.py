@@ -265,13 +265,13 @@ def train_model(train_loader, dataset_name, val_loader, net, device, epochs,
     learning_curve_acc(tr_accuracies, val_accuracies,
                        f'Figures/Learning_curves/{dataset_name}/'
                        f'Accuracy/{model_dirname}',
-                       model_name)
+                       model_name, best_n_batches[0])
 
     # Plot train and validation losses
     learning_curve_loss(tr_losses, val_losses,
                         f'Figures/Learning_curves/{dataset_name}/'
                         f'Loss/{model_dirname}',
-                        model_name)
+                        model_name, best_n_batches[0])
 
     if not os.path.exists(model_folder):
         os.makedirs(model_folder, exist_ok=True)
@@ -280,7 +280,8 @@ def train_model(train_loader, dataset_name, val_loader, net, device, epochs,
                f'{model_folder.split("/")[-1]}/{model_name}.pth')
 
 
-def learning_curve_acc(tr_acc, val_acc, savepath, model_name):
+def learning_curve_acc(tr_acc, val_acc, savepath,
+                       model_name, n_batch):
 
     if not os.path.exists(savepath):
         os.makedirs(savepath, exist_ok=True)
@@ -288,6 +289,7 @@ def learning_curve_acc(tr_acc, val_acc, savepath, model_name):
     plt.figure(figsize=(20, 20))
     line_tr, = plt.plot(tr_acc, label='Training accuracy')
     line_val, = plt.plot(val_acc, label='Validation accuracy')
+    plt.axvline(n_batch, label='')
     plt.grid(True)
     plt.xlabel('Batches')
     plt.ylabel('Accuracy')
@@ -296,7 +298,8 @@ def learning_curve_acc(tr_acc, val_acc, savepath, model_name):
     plt.savefig(f'{savepath}/{model_name}_accuracies.png')
 
 
-def learning_curve_loss(tr_loss, val_loss, savepath, model_name):
+def learning_curve_loss(tr_loss, val_loss, savepath,
+                        model_name, n_batch):
 
     if not os.path.exists(savepath):
         os.makedirs(savepath, exist_ok=True)
@@ -304,6 +307,7 @@ def learning_curve_loss(tr_loss, val_loss, savepath, model_name):
     plt.figure(figsize=(20, 20))
     line_tr, = plt.plot(tr_loss, label='Training Loss')
     line_val, = plt.plot(val_loss, label='Validation Loss')
+    plt.axvline(n_batch, label='')
     plt.grid(True)
     plt.xlabel('Batches')
     plt.ylabel('Loss')
