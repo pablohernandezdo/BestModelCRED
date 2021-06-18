@@ -124,24 +124,24 @@ python train.py \
         --model_name CRED_5e6_256 \
         --dataset_name "STEAD-ZEROS" \
         --train_path "Data/TrainReady/Train_constant.npy" \
-        --val_path "Data/TrainReady/Val_constant.npy" &
+        --val_path "Data/TrainReady/Val_constant.npy"
 
 P7=$!
 
-echo "Training model CRED, lr = 1e-6, epochs = 20, batch_size = 256"
-python train.py \
-        --lr 1e-6 \
-        --epochs 20 \
-        --batch_size 256 \
-        --earlystop 0 \
-        --eval_iter 1 \
-        --model_folder 'models'  \
-        --classifier CRED \
-        --model_name CRED_1e6_256 \
-        --dataset_name "STEAD-ZEROS" \
-        --train_path "Data/TrainReady/Train_constant.npy" \
-        --val_path "Data/TrainReady/Val_constant.npy"
+#echo "Training model CRED, lr = 1e-6, epochs = 20, batch_size = 256"
+#python train.py \
+#        --lr 1e-6 \
+#        --epochs 20 \
+#        --batch_size 256 \
+#        --earlystop 0 \
+#        --eval_iter 1 \
+#        --model_folder 'models'  \
+#        --classifier CRED \
+#        --model_name CRED_1e6_256 \
+#        --dataset_name "STEAD-ZEROS" \
+#        --train_path "Data/TrainReady/Train_constant.npy" \
+#        --val_path "Data/TrainReady/Val_constant.npy"
+#
+#P8=$!
 
-P8=$!
-
-wait $P1 $P2 $P3 $P4 $P5 $P6 $P7 $P8
+wait $P1 $P2 $P3 $P4 $P5 $P6 $P7
