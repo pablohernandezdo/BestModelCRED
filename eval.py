@@ -60,8 +60,9 @@ def main():
     eval_end = time.time()
     total_time = eval_end - start_time
 
-    print(f'Total evaluation time: {format_timespan(total_time)}\n\n'
-          f'Number of network parameters: {params}')
+    print(f'Classifier: {args.classifier}\n'
+          f'Number of network parameters: {params}\n'
+          f'Total evaluation time: {format_timespan(total_time)}')
 
 
 def count_parameters(model):

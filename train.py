@@ -98,6 +98,7 @@ def main():
     train_time = train_end - start_time
 
     print(f'Execution details: \n{args}\n'
+          f'Classifier: {args.classifier}\n'
           f'Number of parameters: {params}\n'
           f'Training time: {format_timespan(train_time)}')
 
