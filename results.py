@@ -18,12 +18,19 @@ def get_results(outputs_csv, dset, beta, n_thresholds=500):
     fpr = np.zeros(len(thresholds))
     fscore = np.zeros(len(thresholds))
 
+    tps =  np.zeros(len(thresholds))
+    fps =  np.zeros(len(thresholds))
+    fns =  np.zeros(len(thresholds))
+    tns =  np.zeros(len(thresholds))
+
     for i, thr in enumerate(thresholds):
         predicted = (df['out'] > thr)
         tp = sum(predicted & df['label'])
         fp = sum(predicted & ~df['label'])
         fn = sum(~predicted & df['label'])
         tn = sum(~predicted & ~df['label'])
+
+        tps[i], fps[i], fns[i], tns[i] = tp, fp, fn, tn
 
         # Evaluation metrics
         acc[i], prec[i], rec[i], fpr[i], fscore[i] = get_metrics(tp,
@@ -32,6 +39,10 @@ def get_results(outputs_csv, dset, beta, n_thresholds=500):
                                                                  fn,
                                                                  beta)
     res_dframe = pd.DataFrame({'thresholds': thresholds,
+                               'tps': tps,
+                               'fps': fps,
+                               'fns': fns,
+                               'tns': tns,
                                'acc': acc,
                                'prec': prec,
                                'rec': rec,
