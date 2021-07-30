@@ -47,9 +47,10 @@ python train.py \
         --model_name CRED_1e3_256_fsc \
         --dataset_name "STEAD-ZEROS" \
         --train_path "Data/TrainReady/train_zeros.npy" \
-        --val_path "Data/TrainReady/val_zeros.npy" &
+        --val_path "Data/TrainReady/val_zeros.npy" 
 
 P3=$!
+wait $P1 $P2 $P3
 
 echo "Training model CRED, lr = 5e-4, epochs = 30, batch_size = 256"
 python train.py \
@@ -66,7 +67,7 @@ python train.py \
         --train_path "Data/TrainReady/train_zeros.npy" \
         --val_path "Data/TrainReady/val_zeros.npy" &
 
-P4=$!
+P1=$!
 
 echo "Training model CRED, lr = 1e-4, epochs = 30, batch_size = 256"
 python train.py \
@@ -83,8 +84,7 @@ python train.py \
         --train_path "Data/TrainReady/train_zeros.npy" \
         --val_path "Data/TrainReady/val_zeros.npy" &
 
-P5=$!
-wait $P1 $P2 $P3 $P4 $P5
+P2=$!
 
 echo "Training model CRED, lr = 5e-5, epochs = 30, batch_size = 256"
 python train.py \
@@ -99,9 +99,10 @@ python train.py \
         --model_name CRED_5e5_256_fsc \
         --dataset_name "STEAD-ZEROS" \
         --train_path "Data/TrainReady/train_zeros.npy" \
-        --val_path "Data/TrainReady/val_zeros.npy" &
+        --val_path "Data/TrainReady/val_zeros.npy" 
 
-P1=$!
+P3=$!
+wait $P1 $P2 $P3
 
 echo "Training model CRED, lr = 1e-5, epochs = 30, batch_size = 256"
 python train.py \
@@ -118,7 +119,7 @@ python train.py \
         --train_path "Data/TrainReady/train_zeros.npy" \
         --val_path "Data/TrainReady/val_zeros.npy" &
 
-P2=$!
+P1=$!
 
 echo "Training model CRED, lr = 5e-6, epochs = 30, batch_size = 256"
 python train.py \
@@ -135,7 +136,7 @@ python train.py \
         --train_path "Data/TrainReady/train_zeros.npy" \
         --val_path "Data/TrainReady/val_zeros.npy" &
 
-P3=$!
+P2=$!
 
 echo "Training model CRED, lr = 1e-6, epochs = 30, batch_size = 256"
 python train.py \
@@ -152,5 +153,5 @@ python train.py \
         --train_path "Data/TrainReady/train_zeros.npy" \
         --val_path "Data/TrainReady/val_zeros.npy"
 
-P4=$!
-wait $P1 $P2 $P3 $P4
+P3=$!
+wait $P1 $P2 $P3
