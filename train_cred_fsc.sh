@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "Training model CRED, lr = 1e-2, epochs = 30, batch_size = 256"
-python train.py \
+python train_fsc.py \
         --lr 1e-2 \
         --device 3 \
         --epochs 30 \
@@ -18,7 +18,7 @@ python train.py \
 P1=$!
 
 echo "Training model CRED, lr = 5e-3, epochs = 30, batch_size = 256"
-python train.py \
+python train_fsc.py \
         --lr 5e-3 \
         --device 3 \
         --epochs 30 \
@@ -35,7 +35,7 @@ python train.py \
 P2=$!
 
 echo "Training model CRED, lr = 1e-3, epochs = 30, batch_size = 256"
-python train.py \
+python train_fsc.py \
         --lr 1e-3 \
         --device 3 \
         --epochs 30 \
@@ -53,7 +53,7 @@ P3=$!
 wait $P1 $P2 $P3
 
 echo "Training model CRED, lr = 5e-4, epochs = 30, batch_size = 256"
-python train.py \
+python train_fsc.py \
         --lr 5e-4 \
         --device 3 \
         --epochs 30 \
@@ -70,7 +70,7 @@ python train.py \
 P1=$!
 
 echo "Training model CRED, lr = 1e-4, epochs = 30, batch_size = 256"
-python train.py \
+python train_fsc.py \
         --lr 1e-4 \
         --device 3 \
         --epochs 30 \
@@ -87,7 +87,7 @@ python train.py \
 P2=$!
 
 echo "Training model CRED, lr = 5e-5, epochs = 30, batch_size = 256"
-python train.py \
+python train_fsc.py \
         --lr 5e-5 \
         --device 3 \
         --epochs 30 \
@@ -105,7 +105,7 @@ P3=$!
 wait $P1 $P2 $P3
 
 echo "Training model CRED, lr = 1e-5, epochs = 30, batch_size = 256"
-python train.py \
+python train_fsc.py \
         --lr 1e-5 \
         --device 3 \
         --epochs 30 \
@@ -122,7 +122,7 @@ python train.py \
 P1=$!
 
 echo "Training model CRED, lr = 5e-6, epochs = 30, batch_size = 256"
-python train.py \
+python train_fsc.py \
         --lr 5e-6 \
         --device 3 \
         --epochs 30 \
@@ -139,7 +139,7 @@ python train.py \
 P2=$!
 
 echo "Training model CRED, lr = 1e-6, epochs = 30, batch_size = 256"
-python train.py \
+python train_fsc.py \
         --lr 1e-6 \
         --device 3 \
         --epochs 30 \
