@@ -62,7 +62,7 @@ python train.py \
         --eval_iter 30 \
         --model_folder 'models'  \
         --classifier CRED \
-        --model_name CRED_5e4_25_fsc \
+        --model_name CRED_5e4_256_fsc \
         --dataset_name "STEAD-ZEROS" \
         --train_path "Data/TrainReady/train_zeros.npy" \
         --val_path "Data/TrainReady/val_zeros.npy" &
